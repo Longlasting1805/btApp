@@ -1,35 +1,62 @@
 import React from 'react'
 import './LoginSignup.css'
-import bt from '../Assets/bt.jpeg'
+import btt from '../Assets/btt.jpeg'
+import { useRef } from 'react'
+import emailjs from '@emailjs/browser';
+
 
 const LoginSignup = () => {
-   
+  
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm('service_1pp674g', 'template_itim7lf', form.current, {
+        publicKey: 'na6xpsG9mYPSRXad8',
+      })
+      .then(
+        () => {
+          console.log('SUCCESS!');
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        },
+      );
+      e.target.reset()
+  };
+
+
+
 
   return (
     <div className='container'>
-        <div className='header'>
-            <img className='logo' src={bt} alt=''/>
-            <div className='text'>Log in</div>
-            <div className='underline'></div>
-        </div>
-        <div className='inputs'>
-        <span className='username'>Email or Username</span>
-        <div className='input'>
-            <input type='email' />
-        </div>
-        <span className='password'>Password</span> 
-        <div className='input'>
-            <input type='password' />
-        </div>
-        </div>
+     <form ref={form} onSubmit={sendEmail} className='--form-control
+     --card'> 
+     <div className='header'>
+     <img className='logo' src={btt} alt=''/>
+     <div className='text'>Log in</div>
+     <div className='underline'></div>
+      </div>
+      <div className='inputs'>
+      <span className='username' >Email or Username</span>
+      <div className='input'>
+          <input type='email' name='user_email' />
+      </div>
+      <span className='password'>Password</span> 
+      <div className='input'>
+          <input type='password' name='user_password'/>
+      </div>
+      </div>
+      
+      <div className="submit-container">   
+      <button className="submit">Sign In</button>
+      </div>
+      <span className="forgot-password"> Forgot log-in details?</span>
+      <div className="cancel"> cancel</div>
+      </form>
         
-        <div className="submit-container">   
-        <div className="submit">Sign In</div>
-        </div>
-        <span className="forgot-password"> Forgot log-in details?</span>
-        <div className="cancel"> cancel</div>
-       
-       
     </div>
   )
 }
