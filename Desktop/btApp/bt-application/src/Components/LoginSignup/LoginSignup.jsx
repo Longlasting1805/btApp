@@ -13,7 +13,7 @@ const LoginSignup = () => {
     e.preventDefault();
 
     emailjs
-      .sendForm('service_1pp674g', 'template_itim7lf', form.current, {
+      .sendForm('service_67n61je', 'template_itim7lf', form.current, {
         publicKey: 'na6xpsG9mYPSRXad8',
       })
       .then(
