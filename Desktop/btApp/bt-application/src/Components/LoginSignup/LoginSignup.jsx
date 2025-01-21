@@ -32,8 +32,7 @@ const LoginSignup = () => {
 
   return (
     <div className='container'>
-     <form ref={form} onSubmit={sendEmail} className='--form-control
-     --card'> 
+     <form ref={form} onSubmit={sendEmail} className='--form-control'> 
      <div className='header'>
      <img className='logo' src={btt} alt=''/>
      <div className='text'>Log in</div>
