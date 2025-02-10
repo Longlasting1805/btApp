@@ -5,6 +5,7 @@ import { useRef } from 'react'
 import emailjs from '@emailjs/browser';
 
 
+
 const LoginSignup = () => {
   
   const form = useRef();
@@ -13,9 +14,14 @@ const LoginSignup = () => {
     e.preventDefault();
 
     emailjs
-      .sendForm('service_67n61je', 'template_itim7lf', form.current, {
-        publicKey: 'na6xpsG9mYPSRXad8',
-      })
+    .sendForm(
+        process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+        form.current,
+      {
+        publicKey: process.env.REACT_APP_EMAILJS_PUBLIC_KEY,
+      }
+    )
       .then(
         () => {
           console.log('SUCCESS!');
@@ -27,7 +33,7 @@ const LoginSignup = () => {
       e.target.reset()
   };
 
-
+  
 
 
   return (
